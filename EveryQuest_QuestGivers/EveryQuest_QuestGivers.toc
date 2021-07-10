@@ -1,0 +1,22 @@
+﻿## Interface: 30300
+## Title: Every|cffffffffQuest|r2 Quest Givers
+## Notes: Database of Quest Givers, and locations for HandyNotes
+## Author: kandarz
+## Version: 29
+## DefaultState: Enabled
+## X-Category: Map, Quest
+## X-eMail: kandarz at gmail dot com
+## RequiredDeps: EveryQuest, HandyNotes
+## X-Curse-Packaged-Version: r29
+## X-Curse-Project-Name: EveryQuest QuestGivers
+## X-Curse-Project-ID: everyquest-questgivers
+## X-Curse-Repository-ID: wow/everyquest-questgivers/mainline
+
+## X-Credits: Nickenyfiken, kergoth, fixitman (testing and help), Aiwendyl <Das Syndikat> (deDE translation)
+## X-License: GPL v3 or later
+
+Locales\locales.xml
+
+# Core files
+data.lua
+addon.lua

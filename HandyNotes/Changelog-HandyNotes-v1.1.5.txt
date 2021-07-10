@@ -1,0 +1,90 @@
+------------------------------------------------------------------------
+r216 | xinhuan | 2010-01-17 10:19:31 +0000 (Sun, 17 Jan 2010) | 1 line
+Changed paths:
+   A /tags/v1.1.5 (from /trunk:215)
+
+Tag release v1.1.5.
+------------------------------------------------------------------------
+r215 | xinhuan | 2010-01-17 10:08:58 +0000 (Sun, 17 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes_HandyNotes.lua
+
+Play nice with Carbonite which is trying to fake as being Cartographer.
+------------------------------------------------------------------------
+r214 | xinhuan | 2010-01-17 10:06:41 +0000 (Sun, 17 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+
+Add HandyNotes to the Blizzard Interface Addon Options too.
+------------------------------------------------------------------------
+r213 | xinhuan | 2010-01-06 13:07:27 +0000 (Wed, 06 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+
+When quest objectives are enabled, the HandyNotes icons on the world map will now show their tooltips again on mouseover.
+------------------------------------------------------------------------
+r212 | xinhuan | 2010-01-05 02:02:02 +0000 (Tue, 05 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes_EditFrame.lua
+   M /trunk/HandyNotes_HandyNotes.lua
+
+When creating or editing a note on a map with dungeon levels, you may now choose which dungeon level the note appears in or choose to have it appear on ALL dungeon levels.
+------------------------------------------------------------------------
+r211 | xinhuan | 2010-01-05 00:52:37 +0000 (Tue, 05 Jan 2010) | 3 lines
+Changed paths:
+   M /trunk/HandyNotes.lua
+   M /trunk/HandyNotes_EditFrame.lua
+   M /trunk/HandyNotes_HandyNotes.lua
+
+HandyNotes will now pass as 3rd parameter the dungeon map level when it calls pluginHandler:GetNodes(mapFile, minimap, dungeonLevel).
+Existing user notes in HandyNotes will still display on all dungeon map levels, but new notes will be level specific.
+Remove compatibility code with all WoW versions earlier than patch 3.1.
+------------------------------------------------------------------------
+r210 | xinhuan | 2010-01-04 23:02:33 +0000 (Mon, 04 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Locales/Locale-deDE.lua
+   M /trunk/Locales/Locale-esES.lua
+   M /trunk/Locales/Locale-frFR.lua
+   M /trunk/Locales/Locale-koKR.lua
+   M /trunk/Locales/Locale-ruRU.lua
+   M /trunk/Locales/Locale-zhCN.lua
+   M /trunk/Locales/Locale-zhTW.lua
+
+Convert to use wowace localization system.
+------------------------------------------------------------------------
+r209 | xinhuan | 2010-01-04 04:27:07 +0000 (Mon, 04 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes_HandyNotes.lua
+   M /trunk/Locales/Locale-enUS.lua
+
+Notes without a title will now show "(No Title)" as the tooltip title rather than have no tooltip on mouseover.
+------------------------------------------------------------------------
+r208 | xinhuan | 2010-01-04 03:40:37 +0000 (Mon, 04 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/HandyNotes.lua
+   M /trunk/HandyNotes.toc
+
+Add the ability to create/change/copy/delete profiles in HandyNotes. HandyNotes was already using Ace3 profiles, just that this wasn't exposed.
+------------------------------------------------------------------------
+r207 | xinhuan | 2010-01-04 01:26:55 +0000 (Mon, 04 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+   M /trunk/Locales/Locale-enUS.lua
+
+Add ability to enable and disable plugins from showing on the map in the HandyNotes options.
+------------------------------------------------------------------------
+r206 | xinhuan | 2010-01-04 00:32:05 +0000 (Mon, 04 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes_EditFrame.lua
+   M /trunk/HandyNotes_HandyNotes.lua
+   M /trunk/Locales/Locale-enUS.lua
+
+Add a wider range of icons to select from.
+------------------------------------------------------------------------
+r205 | xinhuan | 2010-01-01 03:26:46 +0000 (Fri, 01 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.toc
+
+Just a TOC update until I get around to doing more. Also to pull in the latest Astrolabe and Ace3 libraries.
+------------------------------------------------------------------------
