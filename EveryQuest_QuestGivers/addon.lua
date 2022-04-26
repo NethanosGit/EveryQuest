@@ -412,6 +412,9 @@ function HTHandler:OnEnter(mapFile, coord)
 						end
 				end
 			end
+			if not questData then
+					showquest = false
+					end
 			local status, dcount = EveryQuest:GetHistoryStatus(tonumber(uid))
 			if db.LoadData and not InCombatLockdown() then
 
@@ -541,6 +544,10 @@ do
 								end
 						end
 					end
+					if not questData then
+					showquest = false
+					end
+					
 					local status, daily = EveryQuest:GetHistoryStatus(tonumber(uid))
 					if daily ~= nil then
 						icon = "Interface\\AddOns\\EveryQuest_QuestGivers\\Artwork\\DQuest"
