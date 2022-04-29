@@ -422,7 +422,7 @@ function HTHandler:OnEnter(mapFile, coord)
 				-- print(EveryQuest:GetCategory(zone) .. "Toggle")
 				local togglevar = EveryQuest:GetCategory(zone)
 				togglevar = tostring(togglevar) .. "Toggle"
-				if ((status or -2) >= 2 and dcount == nil) then
+				if ((status or -2) >= 0 and dcount == nil) then
 					-- print("Didn't pass status")
 					showcount = showcount - 1
 				elseif not showquest or not db.filters.Categories[togglevar] or not db.filters.Categories[tostring(zone)] then
@@ -436,7 +436,7 @@ function HTHandler:OnEnter(mapFile, coord)
 				end
 			else
 				
-				if ((status or -2) >= 2 and dcount == nil) then
+				if ((status or -2) >= 0 and dcount == nil) then
 					showcount = showcount - 1
 				elseif not showquest then
 					showcount = showcount - 1
@@ -560,7 +560,7 @@ do
 						-- print(EveryQuest:GetCategory(zone) .. "Toggle")
 						local togglevar = EveryQuest:GetCategory(zone)
 						togglevar = tostring(togglevar) .. "Toggle"
-						if ((status or -2) >= 2 and daily == nil) then
+						if ((status or -2) >= 0 and daily == nil) then
 							-- print("Didn't pass status")
 							showcount = showcount - 1
 						elseif not showquest or not db.filters.Categories[togglevar] or not db.filters.Categories[tostring(zone)] then
@@ -568,7 +568,7 @@ do
 							showcount = showcount - 1
 						end
 					else
-						if ((status or -2) >= 2 and daily == nil) then
+						if ((status or -2) >= 0 and daily == nil) then
 							showcount = showcount - 1
 						elseif not showquest then
 							showcount = showcount - 1
