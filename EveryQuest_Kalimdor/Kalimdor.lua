@@ -462,7 +462,7 @@ EveryQuestData["Kalimdor"] = {
 	{ ["id"] = 827,["n"] = "Skull Rock",["l"] = 12,["r"] = 4,["s"] = 2,},
 	{ ["id"] = 789,["n"] = "Sting of the Scorpid",["l"] = 3,["r"] = 1,["s"] = 2,},
 	{ ["id"] = 6394,["n"] = "Thazz'ril's Pick",["l"] = 4,["r"] = 3,["s"] = 2,},
-	{ ["id"] = 830,["n"] = "The Admiral's Orders",["l"] = 7,["r"] = 1,["s"] = 2,},
+	{ ["id"] = 830,["n"] = "The Admiral's Orders\n Kill Lieutenant Benedict, loot the key and go upstairs,\n open the chest and loot 'Admiral Proudmoore's Order'",["l"] = 7,["r"] = 1,["s"] = 2,},
 	{ ["id"] = 831,["n"] = "The Admiral's Orders",["l"] = 7,["r"] = 1,["s"] = 2,},
 	{ ["id"] = 924,["n"] = "The Demon Seed",["l"] = 14,["r"] = 9,["s"] = 2,},
 	{ ["id"] = 786,["n"] = "Thwarting Kolkar Aggression",["l"] = 8,["r"] = 5,["s"] = 2,},
