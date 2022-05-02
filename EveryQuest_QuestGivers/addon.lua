@@ -356,7 +356,9 @@ function HTHandler:OnEnter(mapFile, coord)
 	local hasNPCsShown = false
 	local playerLevel = UnitLevel("player")
 	local questData, zone
-	for i in pairs(displaynpcs) do
+	local displayedNpcsNumber = 1;
+	for i,v in pairs(displaynpcs) do
+		
 		local value = EQG_Data[mapFile][i]
 		--local npcid,npcname,qcount,quests = value:match(qinfopattern)
 		local npcid,npcname,qcount,quests = strsplit("", EQG_Data[mapFile][i])
@@ -448,17 +450,21 @@ function HTHandler:OnEnter(mapFile, coord)
 		-- EveryQuest:Print("showcount: " .. tostring(showcount))
 		del(quests2)
 		if showcount > 0 then
+			if(displayedNpcsNumber > 1) then
+				tooltip:AddLine(" ", 1, 1, 1)
+			end
 			if db.LoadData and db.QuestNames and not InCombatLockdown() then
-				tooltip:AddLine( string.format("|cffffff00%s|r (%d)", npcname, showcount), 1, 1, 0 )
+				tooltip:AddLine( string.format("|cffffffff%s|r", npcname), 1, 1, 0 )
 				for _, str in pairs(questNames) do
 				   tooltip:AddLine( " " .. tostring(str), 1, 1, 1 )
 				end
 			else
-				tooltip:AddLine("|cffffff00"..npcname.."|r", 1, 1, 0)
-				tooltip:AddLine("  " .. string.format("%d quests left", showcount), 1, 1, 1)
+				tooltip:AddLine("|cffffffff"..npcname.."|r", 1, 1, 0)
+				tooltip:AddLine("  " .. string.format("%d Quests Left", showcount), 1, 1, 1)
 			end
 			hasNPCsShown = true
 		end
+		displayedNpcsNumber = displayedNpcsNumber + 1;
 	end
 	if hasNPCsShown then
 		-- Use smart anchoring code to anchor the tooltip to our frame
