@@ -44,7 +44,9 @@ If you like it like this and you don't need more details for the quests than the
 
 
 **APPLYING FILTERS TO THE EVERYQUEST QUEST GIVERS**
-**ICON SETTINGS FOR WORLD MAP AND MINIMAP**
+
+**Icon Settings for World Map and Minimap**
+
 In the **"Quest Givers"** tab if you scroll down you would see Icon Settings.
 
 ![image](https://user-images.githubusercontent.com/86041526/166224437-ec0d7393-cf65-4822-99a9-a9e6df34c7a3.png)
@@ -61,12 +63,14 @@ If you want to change only one setting or the other you will need to:
 ![image](https://user-images.githubusercontent.com/86041526/166224702-5ca62fe0-5d10-4f06-822c-031b42210570.png)
 
 **Quest filtering by Level**
+
 I have added a new feature to Everyquest_QuestGivers, to be able to filter quests by level.
 Simply choose the minimum and maximum level numbers and quests should be now filtered by level.
 
 ![image](https://user-images.githubusercontent.com/86041526/166225367-9dd10273-da00-4fe1-94f1-c7004c17ffd2.png)
 
 **Categories filters**
+
 There are a bunch of categories you can filter out that are all by default enabled.
 Go through each of them and disable what you don't want to see/need.
 
