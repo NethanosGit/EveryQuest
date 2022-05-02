@@ -49,9 +49,16 @@ local defaults = {
 			SideNone = false,
 			MinLevel = 1,
 			MaxLevel = 80,
+			
 			Categories = {
 				["*"] = true,
 			},
+		},
+		ExtraOptions = {
+			["QuestLevel"] = true,
+			["ClassTag"] = false,
+			["DungeonTag"]= false,
+			["DifficultyColor"] = false
 		},
 		debug = false,
 	},
@@ -280,10 +287,18 @@ local function FormatQuestName(questData, uid)
 	local formattedQuestName = ""
 	if questData then
 		formattedQuestName = questData.n
-		formattedQuestName = AddQuestLevel(questData, formattedQuestName)
-		formattedQuestName = SetQuestDifficultyColor(formattedQuestName, questData)
-		formattedQuestName = SetDungeonOrRaidQuest(formattedQuestName, questData)
-		formattedQuestName = SetClassQuestText(formattedQuestName, questData)
+		if db.ExtraOptions.QuestLevel then
+			formattedQuestName = AddQuestLevel(questData, formattedQuestName)
+		end
+		if db.ExtraOptions.DifficultyColor then
+			formattedQuestName = SetQuestDifficultyColor(formattedQuestName, questData)
+		end
+		if db.ExtraOptions.ClassTag then
+			formattedQuestName = SetClassQuestText(formattedQuestName, questData)
+		end
+		if db.ExtraOptions.DungeonTag then
+			formattedQuestName = SetDungeonOrRaidQuest(formattedQuestName, questData)
+		end
 	elseif not questData then
 		formattedQuestName = uid .. L[": No longer in DB"]
 	end
@@ -725,6 +740,41 @@ local function getOptions()
 						},
 					},
 				},
+				QuestDetails = {
+					type = "group",
+					order = 30,
+					guiInline = true,
+					name = L["Extra Options for Quest Names"],
+					get = function(info) return db.ExtraOptions[ info[#info] ] end,
+					set = function(info, value) db.ExtraOptions[ info[#info] ] = value QG:SendMessage("HandyNotes_NotifyUpdate", "QuestGivers") end,
+					args = {
+						desc = {
+							name = "Toggle extra options you want to apply to quests showing on map/minimap",
+							type = "description",
+							order = 0,
+						},
+						QuestLevel = {
+							type = 'toggle',
+							name = L["Show Quest Level"],
+							desc = L["Shows quest level near the name of the quest"],
+						},
+						DifficultyColor = {
+							type = 'toggle',
+							name = L["Difficulty Color"],
+							desc = L["Colors the name of the text by difficulty, accordingly to your current level"],
+						},
+						ClassTag = {
+							type = 'toggle',
+							name = L["Class Tag"],
+							desc = L["Shows class tag near the name of the quest for class quests\n"..string.format("|cff"..GetClassColor(string.upper(UnitClass("player"))).."%s|r","[" .. "Class Quest" .. "]").." Name of Quest"],
+						},
+						DungeonTag = {
+							type = 'toggle',
+							name = L["Dungeon/Raid Tag"],
+							desc = L["Shows dungeon/raid tag near the name of the quest for dungeon/raid quests\n"..string.format("|cff36BFD1%s|r","[Ragefire Chasm]").." Name of Quest"],
+						},
+					},
+				},
 				Level = {
 					type = "group",
 					order = 30,
@@ -756,29 +806,6 @@ local function getOptions()
 						},
 					},
 				},
-				--[[ QLevel = {
-					type = "toggle",
-					order = 15,
-					guiInline = true,
-					name = L["Toggle filtering according to levels"],
-					args = {
-						desc = {
-							name = L["This checkbox toggles whether quest icons should be filtered by level."],
-							type = "description",
-							order = 20,
-						},
-						quest_level = {
-							type = "range",
-							name = L["Quest Level"],
-							desc = L["Maximum Level of quests"],
-							min = 1, max = 80, step = 1,
-							arg = "quest_level",
-							order = 30,
-						},
-					},
-				}, 
-				]]--
-				
 			},
 		}
 	end
