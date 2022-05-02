@@ -408,10 +408,7 @@ function HTHandler:OnEnter(mapFile, coord)
 						showquest = false;
 					end
 				elseif not (suggestedLevel > 0) and (requiredLevel > 0) then
-						if (requiredLevel <= db.filters.MinLevel) or (requiredLevel >= db.filters.MaxLevel) then
-							if(questData.n =="Hunter Training") then
-								SendChatMessage("O intrat in a doua","EMOTE",nil,1)
-							end
+						if (requiredLevel < db.filters.MinLevel) or (requiredLevel > db.filters.MaxLevel) then
 							showquest = false;
 						end
 				end
