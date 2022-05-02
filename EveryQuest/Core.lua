@@ -9,37 +9,25 @@ local Quixote = LibStub("LibQuixote-2.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("EveryQuest")
 local locale = GetLocale()
 local releaseRevision = nil
-do -- Borrowed from BigWigs :)
-	-- START: MAGIC WOWACE VOODOO VERSION STUFF
+do
 	local releaseType = RELEASE
-	
-	
-	--@alpha@
-	-- The following code will only be present in alpha ZIPs.
 	releaseType = ALPHA
-	--@end-alpha@
-
-	-- This will (in ZIPs), be replaced by the highest revision number in the source tree.
 	releaseRevision = tonumber("162")
 
-	-- If the releaseRevision ends up NOT being a number, it means we're running a SVN copy.
 	if type(releaseRevision) ~= "number" then
 		releaseRevision = -1
 	end
 
-	-- Then build the release string, which we can add to the interface option panel.
 	local majorVersion = GetAddOnMetadata("EveryQuest", "Version") or "2.?"
 	if releaseRevision == -1 then
-		releaseString = L["You are running a source checkout of EveryQuest %s directly from the repository."]:format(majorVersion) -- Version message, %s = majorVersion
+		releaseString = L["You are running a source checkout of EveryQuest %s directly from the repository."]:format(majorVersion)
 	elseif releaseType == RELEASE then
-		--releaseString = L["You are running an official release of EveryQuest %s (revision %d)"]:format(majorVersion, releaseRevision) -- Version message, %s = majorVersion, %d = revision
 	elseif releaseType == ALPHA then
-		releaseString = L["You are running an ALPHA RELEASE of EveryQuest %s (revision %d). Please report any bugs @ http://www.wowace.com/addons/everyquest/tickets/"]:format(majorVersion, releaseRevision) -- Version message, %s = majorVersion, %d = revision
+		releaseString = L["You are running an ALPHA RELEASE of EveryQuest %s (revision %d). Please report any bugs @ http://www.wowace.com/addons/everyquest/tickets/"]:format(majorVersion, releaseRevision)
 	end
 	_G.EVERYQUEST_RELEASE_TYPE = releaseType
 	_G.EVERYQUEST_RELEASE_REVISION = releaseRevision
 	_G.EVERYQUEST_RELEASE_STRING = releaseString
-	-- END:   MAGIC WOWACE VOODOO VERSION STUFF
 end
 
 local db, dbpc
@@ -108,21 +96,6 @@ function addon:Colorize(hexColor, text)
 	return "|cff" .. tostring(hexColor or 'ffffff') .. tostring(text) .. "|r"
 end
 
---[[StaticPopupDialogs["EVERYQUEST_UPGRADEDB"] = {
-  text = L["EQ_UPGRADETXT"], -- Upgrade Popup Dialog text
-  button1 = L["Upgrade"], -- Upgrade Popup Dialog
-  button2 = L["Cancel"], -- Upgrade Popup Dialog
-  OnAccept = function()
-	  addon:Debug("EVERYQUEST_UPGRADEDB: OnAccept")
-	  addon:UpgradeDB()
-  end,
-  OnCancel = function()
-	dbpc.upgradeshow = true
-  end,
-  timeout = 0,
-  whileDead = 1,
-  hideOnEscape = 1
-};]]
 StaticPopupDialogs["EVERYQUEST_PURGEOLD"] = {
 	text = L["EQ_PURGETXT"], -- Purge data Popup Dialog
 	button1 = L["Purge"], -- Purge data Popup Dialog
@@ -232,12 +205,11 @@ function addon:OnInitialize()
 	dbpc = self.dbpc.profile
 	
 	self:SetupOptions()
-	--self:UpgradeCheck()
 	
 	if dbpc.dbversion < 3 then
 		self:SilentUpgrade()
 	end
-	--EQ_zones = self:GetZoneMenu()
+
 	self:SetupFrames()
 	qtypes[1] = L["G"] -- Short for 'Group'
 	qtypes[62] = L["R"] -- Short for 'Raid'
@@ -319,12 +291,10 @@ do
 	local EveryQuest_ZoneMenu = CreateFrame("Frame", "EveryQuest_ZoneMenu")
 	EveryQuest_ZoneMenu.displayMode = "MENU"
 	EveryQuest_ZoneMenu.point = "TOPRIGHT"
-	--/run DropDownList1:SetPoint("TOPRIGHT", "EQ_MenuButton", "BOTTOMRIGHT",0,0)
 	EveryQuest_ZoneMenu.relativeTo = "EQ_MenuButton"
 	EveryQuest_ZoneMenu.relativePoint = "BOTTOMRIGHT"
 	EveryQuest_ZoneMenu.initialize = function(self, level)
 		if not level then return end
-		--sort(EQ_zones, function(a, b) addon:Debug(a .. " - " .. b) return true end)
 		wipe(info)
 		if (level == 1) then
 			for key,value in pairs(EQ_zones) do
@@ -391,7 +361,6 @@ do
 			local dungeonid
 			for k,v in pairs(EQ_zones) do if v[1] == "Dungeons" then dungeonid = k end end
 			curzone = EQ_zones[dungeonid][2][UIDROPDOWNMENU_MENU_VALUE]
-			--addon:Debug("level 3 - did:" .. dungeonid .. " value:" .. tostring(UIDROPDOWNMENU_MENU_VALUE) .. " 1:" .. curzone[1])
 			info.isTitle      = 1
 			info.text         = curzone[3]
 			info.notCheckable = 1
@@ -524,97 +493,6 @@ function addon:SavePosition()
 	end
 end
 
---[[function addon:UpgradeCheck()
-	---------------------------------------------------------------------
-	--- Handle Migration
-	---	EveryQuestDBPC = dbversion 1
-	---	EQ2DBPC.QuestHistory = dbversion 2
-	--- EQ2DBPC.history = dbversion 3
-	if EveryQuestDBPC ~= nil then
-		for profilename,profile in pairs(EveryQuestDBPC) do 
-			self:Debug(tostring(profilename) .. " - " .. tostring(profile))
-			if profile.history ~= nil --[and not dbpc.copied] then
-				self:Debug("history is not nil, single upgrade copy")
-				if dbpc.history == nil then
-					dbpc.history = {}
-				end
-				if dbpc.history == nil then
-					dbpc.history = profile.history
-					dbpc.copied = true
-					profile.history = nil
-				end
-			end
-			if profile.QuestHistory ~= nil and not profile.upgraded then
-				tinsert(oldprofile,profile)
-				oldprofilecount = oldprofilecount + 1
-				self:Debug("oldprofilecount "..tostring(oldprofilecount))
-				--StaticPopupDialogs["EVERYQUEST_UPGRADEDB"].text = string.format(L["EQ_UPGRADETXT"], oldprofilecount)
-				--StaticPopup_Show ("EVERYQUEST_UPGRADEDB")
-				self:Debug("QuestHistory is not nil, double upgrade")
-			end
-		end
-	end
-	
-	if dbpc.QuestHistory ~= nil and dbpc.upgradeshow ~= true and not dbpc.upgraded then
-		tinsert(oldprofile,dbpc)
-		oldprofilecount = oldprofilecount + 1
-		--StaticPopupDialogs["EVERYQUEST_UPGRADEDB"].text = string.format(L["EQ_UPGRADETXT"], oldprofilecount)
-		--StaticPopup_Show ("EVERYQUEST_UPGRADEDB")
-	end
-	
-	if oldprofilecount > 0 then
-		StaticPopupDialogs["EVERYQUEST_UPGRADEDB"].text = string.format(L["EQ_UPGRADETXT"], oldprofilecount)
-		StaticPopup_Show ("EVERYQUEST_UPGRADEDB")
-	end
-end
-function addon:UpgradeDB()
-	local toupgrade
-	for k,p in pairs(oldprofile) do
-		if p and p.QuestHistory ~= nil then
-			local category, questname, quest, zone, uid
-			for category,v in pairs(p.QuestHistory) do
-				--self:Debug(category)
-				for questname, oldquest in pairs(v) do
-					if questname ~= "Collapsed" then
-						uid, quest, zone = self:GetQuestData(nil, category, questname)
-						if quest then
-							self:Debug("|cffffff00UpgradeDB|r: qid:" .. tostring(uid) .. ", zoneid:"..tostring(zone))
-							if dbpc.history == nil then
-								dbpc.history = {}
-							end
-							if dbpc.history[zone] == nil then
-								dbpc.history[zone] = {}
-							end
-							if dbpc.history[zone][uid] == nil then
-								dbpc.history[zone][uid] = {}
-							end
-							--dbpc.history[zone][uid].id = quest.id
-							if dbpc.history[zone][uid].status == nil then
-								if oldquest.status ~= nil then
-									dbpc.history[zone][uid].status = oldquest.status
-								else
-									dbpc.history[zone][uid].status = 2
-								end
-							end
-							if oldquest.completed ~= nil and dbpc.history[zone][uid].completed == nil then
-								dbpc.history[zone][uid].completed = oldquest.completed
-							end
-							if oldquest.abandoned ~= nil and dbpc.history[zone][uid].abandoned == nil then
-								dbpc.history[zone][uid].abandoned = oldquest.abandoned
-							end
-						else
-							self:Debug("|cffffff00UpgradeDB|r: Failed to get QID for: '" .. tostring(questname) .. "' in " .. tostring(category))
-						end
-					end
-				end
-			end
-			p.upgraded = true
-		end
-	end
-	dbpc.dbversion = 2
-	LibStub("AceConfigRegistry-3.0"):NotifyChange("EveryQuest")
-end]]
-
 function addon:SilentUpgrade()
 	for zoneid,zone in pairs(dbpc.history) do
 		for uid, quest in pairs(zone) do
@@ -646,7 +524,6 @@ function addon:AddQuest(questid, category, completed, zoneid)
 			if quest ~= nil then
 				if dbpc.history[zone][questid] == nil then
 					dbpc.history[zone][questid] = {}
-					--dbpc.history[zone][questid].id = questid
 					if completed then
 						dbpc.history[zone][questid].status = 1
 					else
@@ -654,11 +531,7 @@ function addon:AddQuest(questid, category, completed, zoneid)
 					end
 				end
 				self:UpdateFrame()
-				-- if quest.w ~= nil then
 					return zone, quest.d, quest.w
-				-- else
-					-- return zone, quest.d
-				-- end
 			else
 				return false
 			end
@@ -804,24 +677,13 @@ function addon:UpdateFrame(zid, zgid)
 	_, zonename = self:GetCategory(zoneid)
 	UIDropDownMenu_SetText(EQDropdown, zonename)
 	if EveryQuestFrame:IsShown() then
-		--[[if db.locallist then
-			self:Debug("Localized quest list is on")
-		end]]
 		local buttonid = 1
 		local controli = 0
 		questlist = self:GetZoneQuestData(zonegroup, zoneid)
-		-- Spew("questlist", questlist)
 		local questcount = 0
 		if questlist then
 			for k, quest in pairs (questlist) do
-				-- if quest.s then
-					--if quest.s == faction or quest.s == 3 then
 					if addon:Filterer(quest.id, quest) then
-						--[[if db.view == "history" then
-							if dbpc.history[zoneid] ~= nil and dbpc.history[zoneid][uid] ~= nil then
-								questcount = questcount +1
-							end
-						else]]
 						if dbpc.history[zoneid] ~= nil and dbpc.history[zoneid][quest.id] ~= nil then
 							--if db.detailnumbers then
 								if dbpc.history[zoneid][quest.id].status == -1 then
@@ -833,25 +695,21 @@ function addon:UpdateFrame(zid, zgid)
 								elseif dbpc.history[zoneid][quest.id].status == 2 then
 									addon.cdone = addon.cdone + 1
 								end
-							--end
 						else
 							addon.cunknown = addon.cunknown +1
 						end
 						questcount = questcount +1
-						--end
 						if dbpc.ignored[quest.id] then
 							addon.cignored = addon.cignored +1
 						end
 					else
 						addon.chidden = addon.chidden +1
 					end
-				-- end
 			end
 		end
 		cshown = questcount
 		
 		if questcount > 0 and not addon.listsorted then
-			--self:Print("Sort the list")
 			sort(questlist, function(a,b) return self:SortTable(a,b) end)
 			addon.listsorted = true
 		end
@@ -861,7 +719,6 @@ function addon:UpdateFrame(zid, zgid)
 		if questcount then
 			if questlist then
 				for k, quest in pairs (questlist) do
-					-- if quest["s"] then
 						if addon:Filterer(quest.id, quest) then
 							controli = controli + 1
 							if controli > scrolloffset then
