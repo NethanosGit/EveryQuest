@@ -53,6 +53,7 @@ In the **"Quest Givers"** tab if you scroll down you would see Icon Settings.
 
 Here you can set the size of the icons and the alpha.
 What I don't like about this at the moment is the fact that both the world map and minimap are affected by this.
+I don't like having the icons on the minimap also. Clutters the minimap with way too many !.
 Will update the addon at some point to offer changing for one or the other.
 If you want to change only one setting or the other you will need to:
 1. Press Esc.
