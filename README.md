@@ -31,6 +31,7 @@ GUIDE FOR INSTALLATION
 ![image](https://user-images.githubusercontent.com/86041526/166223584-29ca82ea-5515-4f91-8634-3426ef7d80c0.png)
 
 If you like it like this and you don't need more details for the quests than the setting up is done. If you want more details for quests continue with the guide.
+
 5. Back on the **"Quest Givers"** tab. Check also the **"Show Quest Names in tooltip"** option.
 
 ![image](https://user-images.githubusercontent.com/86041526/166223938-d80a335d-c8eb-4253-809a-101ffcbb1b5b.png)
