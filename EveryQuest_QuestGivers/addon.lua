@@ -41,7 +41,6 @@ local defaults = {
 	profile = {
 		icon_scale = 1.0,
 		icon_alpha = 1.0,
-		-- quest_level = 80,
 		filters = {
 			Alliance = getfaction("Alliance"),
 			Level = true,
@@ -403,18 +402,21 @@ function HTHandler:OnEnter(mapFile, coord)
 			if EveryQuest.dbpc.profile.ignored[tonumber(uid)] then showquest = false end
 			if db.filters.Level then
 				if (suggestedLevel > 0) then
-					if (suggestedLevel <= db.filters.MinLevel) or (suggestedLevel >= db.filters.MaxLevel) then
+					if (suggestedLevel < db.filters.MinLevel) or (suggestedLevel > db.filters.MaxLevel) then
 						showquest = false;
 					end
 				elseif not (suggestedLevel > 0) and (requiredLevel > 0) then
 						if (requiredLevel <= db.filters.MinLevel) or (requiredLevel >= db.filters.MaxLevel) then
+							if(questData.n =="Hunter Training") then
+								SendChatMessage("O intrat in a doua","EMOTE",nil,1)
+							end
 							showquest = false;
 						end
 				end
 			end
 			if not questData then
-					showquest = false
-					end
+				showquest = false
+			end
 			local status, dcount = EveryQuest:GetHistoryStatus(tonumber(uid))
 			if db.LoadData and not InCombatLockdown() then
 
@@ -535,11 +537,11 @@ do
 					if EveryQuest.dbpc.profile.ignored[tonumber(uid)] then showquest = false end
 					if db.filters.Level then
 						if suggestedLevel and (suggestedLevel > 0) then
-							if (suggestedLevel <= db.filters.MinLevel) or (suggestedLevel >= db.filters.MaxLevel) then
+							if (suggestedLevel < db.filters.MinLevel) or (suggestedLevel > db.filters.MaxLevel) then
 								showquest = false;
 							end
 						elseif not (suggestedLevel > 0) and (requiredLevel > 0) then
-								if (requiredLevel <= db.filters.MinLevel) or (requiredLevel >= db.filters.MaxLevel) then
+								if (requiredLevel < db.filters.MinLevel) or (requiredLevel > db.filters.MaxLevel) then
 									showquest = false;
 								end
 						end

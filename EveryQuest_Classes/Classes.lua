@@ -117,6 +117,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 11001,["n"] = "Vanquish the Raven God",["r"] = 70,["s"] = 3,["t"] = 85,["c"]="DRUID"},
 },
 [-261] = {
+	{ ["id"] = 10070,["n"] = "Well Watcher Solanian",["l"] = 2,["r"] = 2,["s"] = 2,["c"]="HUNTER"},
 	{ ["id"] = 7633,["n"] = "An Introduction",["l"] = 60,["r"] = 60,["s"] = 3,["c"]="HUNTER"},
 	{ ["id"] = 9673,["n"] = "Beast Training",["r"] = 10,["s"] = 2,["c"]="HUNTER"},
 	{ ["id"] = 9675,["n"] = "Beast Training",["r"] = 10,["s"] = 1,["c"]="HUNTER"},
@@ -126,7 +127,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 3108,["n"] = "Etched Rune",["l"] = 1,["r"] = 1,["s"] = 1,["c"]="HUNTER"},
 	{ ["id"] = 3117,["n"] = "Etched Sigil",["l"] = 1,["r"] = 1,["s"] = 1,["c"]="HUNTER"},
 	{ ["id"] = 3082,["n"] = "Etched Tablet",["l"] = 1,["r"] = 1,["s"] = 2,["c"]="HUNTER"},
-	{ ["id"] = 9288,["n"] = "Hunter Training",["l"] = 2,["r"] = 1,["s"] = 1,["c"]="HUNTER"},
+	{ ["id"] = 9288,["n"] = "Hunter Training",["l"] = 1,["r"] = 1,["s"] = 1,["c"]="HUNTER"},
 	{ ["id"] = 9393,["n"] = "Hunter Training",["l"] = 1,["r"] = 1,["s"] = 2,["c"]="HUNTER"},
 	{ ["id"] = 9757,["n"] = "Seek Huntress Kella Nightbow",["r"] = 10,["s"] = 1,["c"]="HUNTER"},
 	{ ["id"] = 9617,["n"] = "Seek the Farstriders",["r"] = 10,["s"] = 2,["c"]="HUNTER"},
@@ -174,6 +175,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 8232,["n"] = "The Green Drake",["l"] = 52,["r"] = 50,["s"] = 3,["t"] = 81,["c"]="HUNTER"},
 },
 [-161] = {
+	{ ["id"] = 10068,["n"] = "Well Watcher Solanian",["l"] = 2,["r"] = 2,["s"] = 2,["c"]="MAGE"},
 	{ ["id"] = 9488,["n"] = "A Simple Robe",["l"] = 16,["r"] = 15,["s"] = 2,["c"]="MAGE"},
 	{ ["id"] = 9487,["n"] = "Arcane Reavers",["l"] = 16,["r"] = 15,["s"] = 2,["c"]="MAGE"},
 	{ ["id"] = 1942,["n"] = "Astral Knot Garment",["l"] = 26,["r"] = 26,["s"] = 1,["c"]="MAGE"},
@@ -198,7 +200,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 1947,["n"] = "Journey to the Marsh",["l"] = 38,["r"] = 30,["s"] = 3,["c"]="MAGE"},
 	{ ["id"] = 1884,["n"] = "Ju-Ju Heaps",["l"] = 10,["r"] = 10,["s"] = 2,["c"]="MAGE"},
 	{ ["id"] = 1945,["n"] = "Laughing Sisters",["l"] = 26,["r"] = 26,["s"] = 2,["c"]="MAGE"},
-	{ ["id"] = 8328,["n"] = "Mage Training",["l"] = 1,["r"] = 1,["s"] = 2,["c"]="MAGE"},
+	{ ["id"] = 8328,["n"] = "Mage Training",["l"] = 2,["r"] = 1,["s"] = 2,["c"]="MAGE"},
 	{ ["id"] = 9290,["n"] = "Mage Training",["l"] = 2,["r"] = 1,["s"] = 1,["c"]="MAGE"},
 	{ ["id"] = 1952,["n"] = "Mage's Wand",["l"] = 40,["r"] = 30,["s"] = 3,["c"]="MAGE"},
 	{ ["id"] = 1880,["n"] = "Mage-tastic Gizmonitor",["l"] = 10,["r"] = 10,["s"] = 1,["c"]="MAGE"},
@@ -233,6 +235,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 1951,["n"] = "Rituals of Power",["l"] = 40,["r"] = 30,["s"] = 3,["t"] = 81,["c"]="MAGE"},
 },
 [-141] = {
+	{ ["id"] = 10069,["n"] = "Well Watcher Solanian",["l"] = 2,["r"] = 2,["s"] = 2,["c"]="PALADIN"},
 	{ ["id"] = 9725,["n"] = "A Demonstration of Loyalty",["r"] = 60,["s"] = 2,["c"]="PALADIN"},
 	{ ["id"] = 9681,["n"] = "A Study in Power",["r"] = 12,["s"] = 2,["c"]="PALADIN"},
 	{ ["id"] = 9721,["n"] = "A Summons from Lord Solanar",["r"] = 60,["s"] = 2,["c"]="PALADIN"},
@@ -251,7 +254,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 7638,["n"] = "Lord Grayson Shadowbreaker",["r"] = 60,["s"] = 1,["c"]="PALADIN"},
 	{ ["id"] = 7670,["n"] = "Lord Grayson Shadowbreaker",["r"] = 60,["s"] = 1,["c"]="PALADIN"},
 	{ ["id"] = 7645,["n"] = "Manna-Enriched Horse Feed",["r"] = 60,["s"] = 1,["c"]="PALADIN"},
-	{ ["id"] = 9287,["n"] = "Paladin Training",["l"] = 2,["r"] = 1,["s"] = 1,["c"]="PALADIN"},
+	{ ["id"] = 9287,["n"] = "Paladin Training",["l"] = 1,["r"] = 1,["s"] = 1,["c"]="PALADIN"},
 	{ ["id"] = 9676,["n"] = "Paladin Training",["l"] = 1,["r"] = 1,["s"] = 2,["c"]="PALADIN"},
 	{ ["id"] = 10590,["n"] = "Prove Your Hatred",["l"] = 52,["r"] = 50,["s"] = 2,["c"]="PALADIN"},
 	{ ["id"] = 9685,["n"] = "Redeeming the Dead",["r"] = 12,["s"] = 2,["c"]="PALADIN"},
@@ -315,6 +318,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 9737,["n"] = "True Masters of the Light",["r"] = 60,["s"] = 2,["t"] = 81,["c"]="PALADIN"},
 },
 [-262] = {
+	{ ["id"] = 10072,["n"] = "Well Watcher Solanian",["l"] = 2,["r"] = 2,["s"] = 2,["c"]="PRIEST"},
 	{ ["id"] = 7621,["n"] = "A Warning",["l"] = 60,["r"] = 60,["s"] = 3,["c"]="PRIEST"},
 	{ ["id"] = 8254,["n"] = "Cenarion Aid",["l"] = 52,["r"] = 50,["s"] = 3,["c"]="PRIEST"},
 	{ ["id"] = 9489,["n"] = "Cleansing the Scar",["l"] = 5,["r"] = 5,["s"] = 2,["c"]="PRIEST"},
@@ -342,6 +346,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 8257,["n"] = "Blood of Morphaz",["l"] = 52,["r"] = 50,["s"] = 3,["t"] = 81,["c"]="PRIEST"},
 },
 [-162] = {
+	{ ["id"] = 10071,["n"] = "Well Watcher Solanian",["l"] = 2,["r"] = 2,["s"] = 2,["c"]="ROGUE"},
 	{ ["id"] = 10372,["n"] = "A Discreet Inquiry",["l"] = 16,["r"] = 16,["s"] = 2,["c"]="ROGUE"},
 	{ ["id"] = 8233,["n"] = "A Simple Request",["l"] = 52,["r"] = 50,["s"] = 3,["c"]="ROGUE"},
 	{ ["id"] = 2282,["n"] = "Alther's Mill",["l"] = 20,["r"] = 16,["s"] = 1,["c"]="ROGUE"},
@@ -375,7 +380,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 2281,["n"] = "Redridge Rendezvous",["l"] = 16,["r"] = 16,["s"] = 1,["c"]="ROGUE"},
 	{ ["id"] = 9618,["n"] = "Return the Reports",["l"] = 10,["r"] = 10,["s"] = 2,["c"]="ROGUE"},
 	{ ["id"] = 2218,["n"] = "Road to Salvation",["l"] = 10,["r"] = 10,["s"] = 1,["c"]="ROGUE"},
-	{ ["id"] = 9392,["n"] = "Rogue Training",["l"] = 1,["r"] = 1,["s"] = 2,["c"]="ROGUE"},
+	{ ["id"] = 9392,["n"] = "Rogue Training",["l"] = 2,["r"] = 1,["s"] = 2,["c"]="ROGUE"},
 	{ ["id"] = 10794,["n"] = "Rogues of the Shattered Hand",["l"] = 24,["r"] = 20,["s"] = 2,["c"]="ROGUE"},
 	{ ["id"] = 8234,["n"] = "Sealed Azure Bag",["l"] = 52,["r"] = 50,["s"] = 3,["c"]="ROGUE"},
 	{ ["id"] = 2205,["n"] = "Seek out SI: 7",["l"] = 10,["r"] = 10,["s"] = 1,["c"]="ROGUE"},
@@ -480,6 +485,7 @@ EveryQuestData["Classes"] = {
 	{ ["id"] = 8258,["n"] = "The Darkreaver Menace",["l"] = 60,["r"] = 58,["s"] = 2,["t"] = 81,["c"]="SHAMAN"},
 },
 [-61] = {
+	{ ["id"] = 10073,["n"] = "Well Watcher Solanian",["l"] = 2,["r"] = 2,["s"] = 2,["c"]="WARLOCK"},
 	{ ["id"] = 8419,["n"] = "An Imp's Request",["l"] = 52,["r"] = 50,["s"] = 3,["c"]="WARLOCK"},
 	{ ["id"] = 7630,["n"] = "Arcanite",["r"] = 60,["s"] = 3,["c"]="WARLOCK"},
 	{ ["id"] = 1599,["n"] = "Beginnings",["r"] = 1,["s"] = 1,["c"]="WARLOCK"},
