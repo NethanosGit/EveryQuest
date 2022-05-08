@@ -36,7 +36,13 @@ If you like it like this and you don't need more details for the quests than the
 
 ![image](https://user-images.githubusercontent.com/86041526/166223938-d80a335d-c8eb-4253-809a-101ffcbb1b5b.png)
 
-6. Quests on map should look like this now.
+6. If you want more details for quests you have in the same tab an area like this:
+
+![image](https://user-images.githubusercontent.com/86041526/166294828-e9077633-5362-4b53-abd6-b0f1472a57fc.png)
+
+Enable what features you like.
+
+6. For me quests look like this on the map.
 
 ![image](https://user-images.githubusercontent.com/86041526/166224041-38d80150-bbf2-46e5-86ea-880dd8499a6a.png)
 
