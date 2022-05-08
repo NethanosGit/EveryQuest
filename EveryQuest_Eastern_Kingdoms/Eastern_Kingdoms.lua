@@ -1405,7 +1405,7 @@ EveryQuestData["Eastern Kingdoms"] = {
 },
 [40] = {
 	{ ["id"] = 6181,["n"] = "A Swift Message",["l"] = 10,["r"] = 10,["s"] = 1,},
-	{ ["id"] = 136,["n"] = "Captain Sanders' Hidden Treasure",["l"] = 16,["r"] = 10,["s"] = 3,},
+	{ ["id"] = 136,["n"] = "Captain Sanders' Hidden Treasure\n (1% chance drop, from any murloc)",["l"] = 16,["r"] = 10,["s"] = 3,},
 	{ ["id"] = 138,["n"] = "Captain Sanders' Hidden Treasure",["l"] = 16,["r"] = 10,["s"] = 3,},
 	{ ["id"] = 139,["n"] = "Captain Sanders' Hidden Treasure",["l"] = 16,["r"] = 10,["s"] = 3,},
 	{ ["id"] = 140,["n"] = "Captain Sanders' Hidden Treasure",["l"] = 16,["r"] = 10,["s"] = 3,},

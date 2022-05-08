@@ -494,6 +494,18 @@ EQG_Data = {
 		["44708030"] = "239Grimbooze Thunderbrew648%149%150%151%153%1117%1",
 		["41508836"] = "6182Daphne Stilwell31651%11652%11793%1",
 		["68457009"] = "7024Agent Kearnen12359%1",
+		["54601150"] = "519Any Murloc on the Coast1136%1",
+		["50001150"] = "519Any Murloc on the Coast1136%1",
+		["45000900"] = "519Any Murloc on the Coast1136%1",
+		["40001200"] = "519Any Murloc on the Coast1136%1",
+		["36701880"] = "519Any Murloc on the Coast1136%1",
+		["32502680"] = "519Any Murloc on the Coast1136%1",
+		["26904920"] = "519Any Murloc on the Coast1136%1",
+		["27704120"] = "519Any Murloc on the Coast1136%1",
+		["26505670"] = "519Any Murloc on the Coast1136%1",
+		["26206590"] = "519Any Murloc on the Coast1136%1",
+		["28907490"] = "519Any Murloc on the Coast1136%1",
+		["35508570"] = "519Any Murloc on the Coast1136%1",
 	},
 	["DeadwindPass"] = {
 		["47107520"] = "18253Archmage Leryda2010733%310734%310735%310736%310738%310739%310740%310725%310741%310726%310727%310728%310729%310730%310731%310732%311031%311032%311033%311034%3",
