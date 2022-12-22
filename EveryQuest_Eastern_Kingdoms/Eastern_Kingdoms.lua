@@ -1105,6 +1105,7 @@ EveryQuestData["Eastern Kingdoms"] = {
 	{ ["id"] = 574,["n"] = "Special Forces",["l"] = 38,["r"] = 30,["s"] = 1,},
 	{ ["id"] = 598,["n"] = "Split Bone Necklace",["l"] = 42,["r"] = 30,["s"] = 2,},
 	{ ["id"] = 348,["n"] = "Stranglethorn Fever",["l"] = 45,["r"] = 40,["s"] = 3,},
+	{ ["id"] = 349,["n"] = "Stranglethorn Fever",["l"] = 35,["r"] = 32,["s"] = 3,},
 	{ ["id"] = 198,["n"] = "Supplies to Private Thorsen",["l"] = 32,["r"] = 30,["s"] = 1,},
 	{ ["id"] = 575,["n"] = "Supply and Demand",["l"] = 31,["r"] = 26,["s"] = 3,},
 	{ ["id"] = 595,["n"] = "The Bloodsail Buccaneers",["l"] = 41,["r"] = 37,["s"] = 3,},
