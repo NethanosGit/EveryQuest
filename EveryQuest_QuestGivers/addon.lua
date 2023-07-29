@@ -47,6 +47,7 @@ local defaults = {
 			Horde = getfaction("Horde"),
 			SideBoth = true,
 			SideNone = false,
+			FollowCharacterLevel = true,
 			MinLevel = 1,
 			MaxLevel = 80,
 			
@@ -782,8 +783,15 @@ local function getOptions()
 					disabled = function() return not db.filters.Level end,
 					name = L["Filter Quests by Level"],
 					args = {
-						MinLevel = {
+						FollowCharacterLevel = {
 							order = 1,
+							type = "toggle",
+							name = L["Follow Character Level"],
+							desc = L["Automatically adjusts the Minimum Level and Maximum Level filters to only show quests applicable to your level. Useful for leveling."],
+							width = "double"
+						},
+						MinLevel = {
+							order = 2,
 							type = "range",
 							name = L["Minimum Level"],
 							get = function(info) return db.filters[ info[#info] ] end,
@@ -794,7 +802,7 @@ local function getOptions()
 							width = "double"
 						},
 						MaxLevel = {
-							order = 2,
+							order = 3,
 							type = "range",
 							name = L["Maximum Level"],
 							get = function(info) return db.filters[ info[#info] ] end,
@@ -889,6 +897,26 @@ function QG:OnInitialize()
 	-- Initialize our database with HandyNotes
 	HandyNotes:RegisterPluginDB("QuestGivers", HTHandler, options)
 end
+
+function AdjustLevelFilters()
+	if db.FollowCharacterLevel then
+		local playerLevel = UnitLevel("player")
+		if playerLevel < 7 then
+			db.filters.MinLevel = 1
+			db.filters.MaxLevel = playerLevel + 3
+		elseif playerLevel > 76 then
+			db.filters.MinLevel = playerLevel - 5
+			db.filters.MaxLevel = 80
+		else 
+			db.filters.MinLevel = playerLevel - 5
+			db.filters.MaxLevel = playerLevel + 3
+		end
+	end
+end
+
+local adjustLevelFilterFrame = CreateFrame("FRAME")
+adjustLevelFilterFrame:RegisterEvent("PLAYER_LEVEL_UP")
+adjustLevelFilterFrame:SetScript("OnEvent", AdjustLevelFilters)
 
 function QG:OnEnable()
 	--self:RegisterEvent("TRAINER_SHOW")
