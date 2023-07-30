@@ -39,15 +39,17 @@ end
 
 local defaults = {
 	profile = {
-		icon_scale = 1.0,
+		icon_scale = 1.4,
 		icon_alpha = 1.0,
+		LoadData = true,
+		QuestNames = true,
+		FollowCharacterLevel = true,
 		filters = {
 			Alliance = getfaction("Alliance"),
 			Level = true,
 			Horde = getfaction("Horde"),
 			SideBoth = true,
 			SideNone = false,
-			FollowCharacterLevel = true,
 			MinLevel = 1,
 			MaxLevel = 80,
 			
@@ -57,9 +59,9 @@ local defaults = {
 		},
 		ExtraOptions = {
 			["QuestLevel"] = true,
-			["ClassTag"] = false,
-			["DungeonTag"]= false,
-			["DifficultyColor"] = false
+			["ClassTag"] = true,
+			["DungeonTag"]= true,
+			["DifficultyColor"] = true
 		},
 		debug = false,
 	},
