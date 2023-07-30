@@ -951,6 +951,54 @@ function AdjustLevelFilters()
 	end
 end
 
+function AdjustTradeSkillFilters()
+	db.filters.Categories["-181"] = false
+	db.filters.Categories["-121"] = false
+	db.filters.Categories["-304"] = false
+	db.filters.Categories["-201"] = false
+	db.filters.Categories["-324"] = false
+	db.filters.Categories["-101"] = false
+	db.filters.Categories["-24"] = false
+	db.filters.Categories["-371"] = false
+	db.filters.Categories["-373"] = false
+	db.filters.Categories["-182"] = false
+	db.filters.Categories["-264"] = false
+	
+	local professions = {}
+	for i = 1, GetNumSkillLines() do
+		local skillName, _, _, _ = GetSkillLineInfo(i)
+		if skillName then
+			table.insert(professions, {name = skillName})
+		end
+    end
+	
+	for _, profession in ipairs(professions) do
+		if profession.name == "Alchemy" then
+			db.filters.Categories["-181"] = true
+		elseif profession.name == "Blacksmithing" then
+			db.filters.Categories["-121"] = true
+		elseif profession.name == "Cooking" then
+			db.filters.Categories["-304"] = true
+		elseif profession.name == "Engineering" then
+			db.filters.Categories["-201"] = true
+		elseif profession.name == "First Aid" then
+			db.filters.Categories["-324"] = true
+		elseif profession.name == "Fishing" then
+			db.filters.Categories["-101"] = true
+		elseif profession.name == "Herbalism" then
+			db.filters.Categories["-24"] = true
+		elseif profession.name == "Inscription" then
+			db.filters.Categories["-371"] = true
+		elseif profession.name == "Jewelcrafting" then
+			db.filters.Categories["-373"] = true
+		elseif profession.name == "Leatherworking" then
+			db.filters.Categories["-182"] = true
+		elseif profession.name == "Tailoring" then
+			db.filters.Categories["-264"] = true
+		end
+	end
+end
+
 local adjustFilterFrame = CreateFrame("FRAME")
 adjustFilterFrame:RegisterEvent("PLAYER_LEVEL_UP")
 adjustFilterFrame:RegisterEvent("PLAYER_LOGIN")
@@ -958,8 +1006,9 @@ adjustFilterFrame:SetScript("OnEvent", function(self, event, ...)
 	if event == "PLAYER_LEVEL_UP" then
 		AdjustLevelFilters()
 	elseif event == "PLAYER_LOGIN" then
-		AdjustLevelFilters()
 		AdjustClassFilters()
+		AdjustLevelFilters()
+		AdjustTradeSkillFilters()
 	end
 end)
 
