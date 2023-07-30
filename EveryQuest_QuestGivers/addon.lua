@@ -898,6 +898,43 @@ function QG:OnInitialize()
 	HandyNotes:RegisterPluginDB("QuestGivers", HTHandler, options)
 end
 
+function AdjustClassFilters()
+	db.filters.Categories["-372"] = false
+	db.filters.Categories["-263"] = false
+	db.filters.Categories["-261"] = false
+	db.filters.Categories["-161"] = false
+	db.filters.Categories["-141"] = false
+	db.filters.Categories["-262"] = false
+	db.filters.Categories["-162"] = false
+	db.filters.Categories["-82"] = false
+	db.filters.Categories["-61"] = false
+	db.filters.Categories["-81"] = false
+	
+	local playerClass = UnitClass("player")
+	
+	if playerClass == "DeathKnight" then
+		db.filters.Categories["-372"] = true
+	elseif playerClass == "Druid" then
+		db.filters.Categories["-263"] = true
+	elseif playerClass == "Hunter" then
+		db.filters.Categories["-261"] = true
+	elseif playerClass == "Mage" then
+		db.filters.Categories["-161"] = true
+	elseif playerClass == "Paladin" then
+		db.filters.Categories["-141"] = true
+	elseif playerClass == "Priest" then
+		db.filters.Categories["-262"] = true
+	elseif playerClass == "Rogue" then
+		db.filters.Categories["-162"] = true
+	elseif playerClass == "Shaman" then
+		db.filters.Categories["-82"] = true
+	elseif playerClass == "Warlock" then
+		db.filters.Categories["-61"] = true
+	elseif playerClass == "Warrior" then
+		db.filters.Categories["-81"] = true
+	end
+end
+
 function AdjustLevelFilters()
 	if db.FollowCharacterLevel then
 		local playerLevel = UnitLevel("player")
@@ -914,9 +951,17 @@ function AdjustLevelFilters()
 	end
 end
 
-local adjustLevelFilterFrame = CreateFrame("FRAME")
-adjustLevelFilterFrame:RegisterEvent("PLAYER_LEVEL_UP")
-adjustLevelFilterFrame:SetScript("OnEvent", AdjustLevelFilters)
+local adjustFilterFrame = CreateFrame("FRAME")
+adjustFilterFrame:RegisterEvent("PLAYER_LEVEL_UP")
+adjustFilterFrame:RegisterEvent("PLAYER_LOGIN")
+adjustFilterFrame:SetScript("OnEvent", function(self, event, ...)
+	if event == "PLAYER_LEVEL_UP" then
+		AdjustLevelFilters()
+	elseif event == "PLAYER_LOGIN" then
+		AdjustLevelFilters()
+		AdjustClassFilters()
+	end
+end)
 
 function QG:OnEnable()
 	--self:RegisterEvent("TRAINER_SHOW")
