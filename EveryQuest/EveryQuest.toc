@@ -1,5 +1,6 @@
 ## Interface: 30300
 ## Title: EveryQuest
+## Notes: A quest helper for Wrath of the Lich King.
 ## Author: kandarz, Marotheit
 ## SavedVariables: EveryQuestDB, EQ2DB
 ## SavedVariablesPerCharacter: EveryQuestDBPC, EQ2DBPC
