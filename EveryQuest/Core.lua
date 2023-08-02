@@ -1392,7 +1392,7 @@ function addon:LoadQuestData(group)
 			
 			--self:Debug("Module "..tostring(group).." not loaded")
 			if enabled then
-				self:Print( sfmt(L["Loading %s Quest Data"], group) ) -- LOD status, %s = localized module name
+				--self:Print( sfmt(L["Loading %s Quest Data"], group) ) -- LOD status, %s = localized module name
 				local succ,reason = LoadAddOn(varname)
 				if succ ~= 1 then
 					self:Print( sfmt(L["Could not load %s Quest Data because of %s"], group, reason) ) -- LOD status, %s = localized module name, %s = failure reason from WoW API
