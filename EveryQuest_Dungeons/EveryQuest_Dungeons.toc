@@ -1,14 +1,8 @@
 ## Interface: 30300
-## Title: Every|cffffffffQuest|r2 Dungeons Quests
-## Notes: Contains a list of quests for Dungeons
+## Title: EveryQuest [Dungeons Quests]
+## Notes: Contains a list of dungeon quests for use with EveryQuest.
 ## Author: kandarz
-## X-Email: kandarz@gmail.com
-## Version: r162
+## Version: 2.4
 ## LoadOnDemand: 1
-## X-Category: Quest
-## X-Curse-Packaged-Version: r162
-## X-Curse-Project-Name: EveryQuest
-## X-Curse-Project-ID: everyquest
-## X-Curse-Repository-ID: wow/everyquest/mainline
 
 Dungeons.lua

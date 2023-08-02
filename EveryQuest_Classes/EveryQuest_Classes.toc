@@ -1,14 +1,7 @@
 ## Interface: 30300
-## Title: Every|cffffffffQuest|r2 Classes Quests
-## Notes: Contains a list of quests for Classes
+## Title: EveryQuest [Class Quests]
+## Notes: Contains a list of class quests for use with EveryQuest.
 ## Author: kandarz
-## X-Email: kandarz@gmail.com
-## Version: r162
-## LoadOnDemand: 1
-## X-Category: Quest
-## X-Curse-Packaged-Version: r162
-## X-Curse-Project-Name: EveryQuest
-## X-Curse-Project-ID: everyquest
-## X-Curse-Repository-ID: wow/everyquest/mainline
+## Version: 2.4
 
 Classes.lua
