@@ -158,24 +158,24 @@ function addon:OnInitialize()
 				},
 				sort = {
 					["d"] = {
-						["Weight"] = 5,
-						["Dir"] = 2,
+						["Weight"] = -5,
+						["Dir"] = 1,
 					},
 					["n"] = {
-						["Weight"] = -10,
+						["Weight"] = 5,
 						["Dir"] = 1,
 					},
 					["l"] = {
-						["Weight"] = -5,
-						["Dir"] = 2,
+						["Weight"] = 10,
+						["Dir"] = 1,
 					},
 					["w"] = {
-						["Weight"] = 10,
-						["Dir"] = 2,
+						["Weight"] = -10,
+						["Dir"] = 1,
 					},
 					["t"] = {
 						["Weight"] = 0,
-						["Dir"] = 2,
+						["Dir"] = 1,
 					},
 				},
 				filters = {
