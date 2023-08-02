@@ -1,5 +1,5 @@
 ## Interface: 30300
-## Title: Every[Quest] Profession Quests
+## Title: EveryQuest [Profession Quests]
 ## Notes: Contains a list of profession quests for use with EveryQuest.
 ## Author: kandarz
 ## Version: 2.4
