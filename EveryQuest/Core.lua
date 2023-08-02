@@ -158,7 +158,7 @@ function addon:OnInitialize()
 				},
 				sort = {
 					["d"] = {
-						["Weight"] = -5,
+						["Weight"] = -10,
 						["Dir"] = 1,
 					},
 					["n"] = {
@@ -170,7 +170,7 @@ function addon:OnInitialize()
 						["Dir"] = 1,
 					},
 					["w"] = {
-						["Weight"] = -10,
+						["Weight"] = -5,
 						["Dir"] = 1,
 					},
 					["t"] = {
