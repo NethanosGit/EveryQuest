@@ -1,6 +1,6 @@
 ## Interface: 30300
 ## Title: EveryQuest [Eastern Kingdoms Quests]
-## Notes: Contains a list of Eastern Kingdom quests for use with EveryQuest.
+## Notes: Contains a list of Eastern Kingdoms quests for use with EveryQuest.
 ## Author: kandarz
 ## Version: 2.4
 ## LoadOnDemand: 1
