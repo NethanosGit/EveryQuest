@@ -6,6 +6,7 @@ debug = true
 local L = LibStub("AceLocale-3.0"):NewLocale("EveryQuest", "enUS", true, debug)
 
 L[": No longer in DB"] = true
+L["Automatically adjusts the Minimum Level and Maximum Level filters to only show quests applicable to your level. Useful for leveling."] = true
 L["Close"] = true
 L["Create waypoint"] = true
 L["Data Loading"] = true
@@ -14,6 +15,7 @@ L["DataLoadWarning"] = [=[|cffFF6D6DWarning:|r The following can make your game 
 The EveryQuest database was not designed for systematic random lookups.]=]
 L["Enable: "] = true
 L["Enables Quest Names in tooltips and category filtering"] = true
+L["Follow Character Level"] = true
 L["Hide Quest Giver"] = true
 L["Icon Alpha"] = true
 L["Icon Scale"] = true

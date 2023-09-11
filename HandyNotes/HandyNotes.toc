@@ -1,17 +1,10 @@
 ﻿## Interface: 30300
 ## Title: HandyNotes
-## Notes: Handy notes for your maps
-## Notes-frFR: Notes pratiques pour vos cartes.
+## Notes: Enables support for additional map information for use with EveryQuest.
 ## Author: Xinhuan
-## Version: 1.1.5
+## Version: 1.1.6
 ## DefaultState: enabled
-## X-Category: Map
-## X-eMail: xinhuan @ gmail DOT com
 ## OptionalDeps: Ace3, TomTom
-## X-Curse-Packaged-Version: v1.1.5
-## X-Curse-Project-Name: HandyNotes
-## X-Curse-Project-ID: handynotes
-## X-Curse-Repository-ID: wow/handynotes/mainline
 
 ## SavedVariables: HandyNotesDB, HandyNotes_HandyNotesDB
 

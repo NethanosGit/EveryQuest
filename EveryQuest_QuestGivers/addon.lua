@@ -39,8 +39,11 @@ end
 
 local defaults = {
 	profile = {
-		icon_scale = 1.0,
+		icon_scale = 1.4,
 		icon_alpha = 1.0,
+		LoadData = true,
+		QuestNames = true,
+		FollowCharacterLevel = true,
 		filters = {
 			Alliance = getfaction("Alliance"),
 			Level = true,
@@ -56,9 +59,9 @@ local defaults = {
 		},
 		ExtraOptions = {
 			["QuestLevel"] = true,
-			["ClassTag"] = false,
-			["DungeonTag"]= false,
-			["DifficultyColor"] = false
+			["ClassTag"] = true,
+			["DungeonTag"]= true,
+			["DifficultyColor"] = true
 		},
 		debug = false,
 	},
@@ -782,8 +785,15 @@ local function getOptions()
 					disabled = function() return not db.filters.Level end,
 					name = L["Filter Quests by Level"],
 					args = {
-						MinLevel = {
+						FollowCharacterLevel = {
 							order = 1,
+							type = "toggle",
+							name = L["Follow Character Level"],
+							desc = L["Automatically adjusts the Minimum Level and Maximum Level filters to only show quests applicable to your level. Useful for leveling."],
+							width = "double"
+						},
+						MinLevel = {
+							order = 2,
 							type = "range",
 							name = L["Minimum Level"],
 							get = function(info) return db.filters[ info[#info] ] end,
@@ -794,7 +804,7 @@ local function getOptions()
 							width = "double"
 						},
 						MaxLevel = {
-							order = 2,
+							order = 3,
 							type = "range",
 							name = L["Maximum Level"],
 							get = function(info) return db.filters[ info[#info] ] end,
@@ -889,6 +899,120 @@ function QG:OnInitialize()
 	-- Initialize our database with HandyNotes
 	HandyNotes:RegisterPluginDB("QuestGivers", HTHandler, options)
 end
+
+function AdjustClassFilters()
+	db.filters.Categories["-372"] = false
+	db.filters.Categories["-263"] = false
+	db.filters.Categories["-261"] = false
+	db.filters.Categories["-161"] = false
+	db.filters.Categories["-141"] = false
+	db.filters.Categories["-262"] = false
+	db.filters.Categories["-162"] = false
+	db.filters.Categories["-82"] = false
+	db.filters.Categories["-61"] = false
+	db.filters.Categories["-81"] = false
+	
+	local playerClass = UnitClass("player")
+	
+	if playerClass == "DeathKnight" then
+		db.filters.Categories["-372"] = true
+	elseif playerClass == "Druid" then
+		db.filters.Categories["-263"] = true
+	elseif playerClass == "Hunter" then
+		db.filters.Categories["-261"] = true
+	elseif playerClass == "Mage" then
+		db.filters.Categories["-161"] = true
+	elseif playerClass == "Paladin" then
+		db.filters.Categories["-141"] = true
+	elseif playerClass == "Priest" then
+		db.filters.Categories["-262"] = true
+	elseif playerClass == "Rogue" then
+		db.filters.Categories["-162"] = true
+	elseif playerClass == "Shaman" then
+		db.filters.Categories["-82"] = true
+	elseif playerClass == "Warlock" then
+		db.filters.Categories["-61"] = true
+	elseif playerClass == "Warrior" then
+		db.filters.Categories["-81"] = true
+	end
+end
+
+function AdjustLevelFilters()
+	if db.FollowCharacterLevel then
+		local playerLevel = UnitLevel("player")
+		if playerLevel < 7 then
+			db.filters.MinLevel = 1
+			db.filters.MaxLevel = playerLevel + 3
+		elseif playerLevel > 76 then
+			db.filters.MinLevel = playerLevel - 5
+			db.filters.MaxLevel = 80
+		else 
+			db.filters.MinLevel = playerLevel - 5
+			db.filters.MaxLevel = playerLevel + 3
+		end
+	end
+end
+
+function AdjustTradeSkillFilters()
+	db.filters.Categories["-181"] = false
+	db.filters.Categories["-121"] = false
+	db.filters.Categories["-304"] = false
+	db.filters.Categories["-201"] = false
+	db.filters.Categories["-324"] = false
+	db.filters.Categories["-101"] = false
+	db.filters.Categories["-24"] = false
+	db.filters.Categories["-371"] = false
+	db.filters.Categories["-373"] = false
+	db.filters.Categories["-182"] = false
+	db.filters.Categories["-264"] = false
+	
+	local professions = {}
+	for i = 1, GetNumSkillLines() do
+		local skillName, _, _, _ = GetSkillLineInfo(i)
+		if skillName then
+			table.insert(professions, {name = skillName})
+		end
+    end
+	
+	for _, profession in ipairs(professions) do
+		if profession.name == "Alchemy" then
+			db.filters.Categories["-181"] = true
+		elseif profession.name == "Blacksmithing" then
+			db.filters.Categories["-121"] = true
+		elseif profession.name == "Cooking" then
+			db.filters.Categories["-304"] = true
+		elseif profession.name == "Engineering" then
+			db.filters.Categories["-201"] = true
+		elseif profession.name == "First Aid" then
+			db.filters.Categories["-324"] = true
+		elseif profession.name == "Fishing" then
+			db.filters.Categories["-101"] = true
+		elseif profession.name == "Herbalism" then
+			db.filters.Categories["-24"] = true
+		elseif profession.name == "Inscription" then
+			db.filters.Categories["-371"] = true
+		elseif profession.name == "Jewelcrafting" then
+			db.filters.Categories["-373"] = true
+		elseif profession.name == "Leatherworking" then
+			db.filters.Categories["-182"] = true
+		elseif profession.name == "Tailoring" then
+			db.filters.Categories["-264"] = true
+		end
+	end
+end
+
+local adjustFilterFrame = CreateFrame("FRAME")
+adjustFilterFrame:RegisterEvent("PLAYER_LEVEL_UP")
+adjustFilterFrame:RegisterEvent("PLAYER_LOGIN")
+adjustFilterFrame:SetScript("OnEvent", function(self, event, ...)
+	if event == "PLAYER_LEVEL_UP" then
+		AdjustLevelFilters()
+	elseif event == "PLAYER_LOGIN" then
+		AdjustClassFilters()
+		AdjustLevelFilters()
+		AdjustTradeSkillFilters()
+	end
+end)
 
 function QG:OnEnable()
 	--self:RegisterEvent("TRAINER_SHOW")

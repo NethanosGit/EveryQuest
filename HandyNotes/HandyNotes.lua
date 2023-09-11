@@ -20,7 +20,7 @@ local defaults = {
 		icon_scale    = 1.0,
 		icon_alpha    = 1.0,
 		icon_scale_minimap = 1.0,
-		icon_alpha_minimap = 1.0,
+		icon_alpha_minimap = 0.0,
 		enabledPlugins = {
 			['*'] = true,
 		},
